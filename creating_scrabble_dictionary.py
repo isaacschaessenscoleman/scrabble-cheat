@@ -2,7 +2,9 @@ import os
 import csv
 
 # scrabble score system in a python dictionary
-score_system = {'a':1, 'b':3, 'c':3, 'd':2,'e':1, 'f':4, 'g':2,'h':4,'i':1, 'j':8, 'k':5, 'l':1, 'm':3, 'n':1, 'o':1, 'p':3, 'q':10, 'r':1, 's':1, 't':1, 'u':1, 'v':4, 'w':4, 'x':8, 'y':4, 'z':10}
+score_system = {'a': 1, 'b': 3, 'c': 3, 'd': 2, 'e': 1, 'f': 4, 'g': 2, 'h': 4, 'i': 1, 'j': 8, 'k': 5, 'l': 1,
+                'm': 3, 'n': 1, 'o': 1, 'p': 3, 'q': 10, 'r': 1, 's': 1, 't': 1, 'u': 1, 'v': 4, 'w': 4, 'x': 8, 'y': 4, 'z': 10}
+
 
 def word_score(word):
     ''' This function calculates the scrabble word score of a given word (excluding any extra positional points e.g. triple word score)'''
@@ -12,9 +14,9 @@ def word_score(word):
         try:
             score += score_system[letter]
         except:
-            #removing any words with spaces, hyphens or other non-alphabetical characters
+            # removing any words with spaces, hyphens or other non-alphabetical characters
             continue
-    
+
     return score
 
 
@@ -34,7 +36,7 @@ for file in words_file_list:
     with open(file_path, 'r', encoding='iso-8859-1') as file:
         reader = csv.reader(file)
         for row in reader:
-            if row: # skips any empty rows
+            if row:  # skips any empty rows
                 word = row[0].strip()
                 all_words_list.append(word)
 
@@ -42,20 +44,10 @@ for file in words_file_list:
 all_unique_words = sorted(list(set(all_words_list)))
 
 # removing all errors in the given csv files of words. This includes multiple words, hyphenated words, and other non-alphabetic characters
-all_scrabble_words = [word for word in all_unique_words if all(char.isalpha() for char in word)]
-
-print(len(all_unique_words))
-print(len(all_scrabble_words))
-
+all_scrabble_words = [word for word in all_unique_words if all(
+    char.isalpha() for char in word)]
 
 with open('scrabble_dictionary.csv', 'w') as file:
     writer_object = csv.writer(file)
     for word in all_scrabble_words:
-        writer_object.writerow([word,word_score(word)])
-
-
-
-
-print('done')
-
-
+        writer_object.writerow([word, word_score(word)])
