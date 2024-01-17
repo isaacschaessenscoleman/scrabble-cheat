@@ -6,7 +6,7 @@ import csv
 
 ''' Each line of the csv file has two elements: the first is a word, and the second is its scrabble word score.
     To make the access of word scores easier, below I'll make a python dictionary with the keys as words, and their 
-    correspodning values as the word scores. '''
+    corresponding values as the word scores. '''
 scrabble_dictionary = {}
 
 current_folder = os.path.dirname(os.path.abspath(__file__))
@@ -36,7 +36,7 @@ def available_words(list_of_letters):
         list = [word for word in list if len(word) != i+1]
 
 
-    # The following code removes words from the final_list list that have several occurences of the same letter which the user's
+    # The following code removes words from the final_list list that have several occurrences of the same letter which the user's
     # list doesn't have
 
     final_list = [word for word in final_list if len(word) <= len(list_of_letters)]
@@ -74,5 +74,5 @@ b = [f'{tupl[0]}: {tupl[1]}' for tupl in a]
 print(b)
 
 
-''' CREATE THE UI NOWWWWWWWWWWW'''
+
 
