@@ -1,6 +1,6 @@
 # Scrabble Cheater
 
-A command line application that outputs all the words with their scrabble score, given a user's set of letters.
+A command line application that outputs all the possible words with their scrabble score, given a user's set of letters.
 
 ### Files
 
